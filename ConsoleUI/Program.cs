@@ -6,6 +6,65 @@ using System.Threading.Tasks;
 
 namespace ConsoleUI
 {
+    public abstract class Vehicle
+    {
+        public string name;
+        public int price;
+        public int model;
+        public Vehicle(string vname, int vprice, int vmodel)
+        {
+            name = vname;
+            price = vprice;
+            model = vmodel;
+        }
+        public virtual void speed()
+        {
+            Console.WriteLine("120lmph");
+        }
+        public abstract void mileage();
+    }
+
+    public class Car : Vehicle
+    {
+        public int seating_capacity;
+        // creating constructor and calling base class constructor as well
+        public Car(string vname, int vprice, int vmodel, int capacity) : base(vname, vprice, vmodel)
+        {
+            seating_capacity = capacity;
+        }
+        public override void mileage()
+        {
+            Console.WriteLine("Zen mileage:1200cc");
+        }
+        public void DisplayInfo()
+        {
+            Console.WriteLine("\nThe name of the car is:" + name);
+            Console.WriteLine("The price of the car is:" + price);
+            Console.WriteLine("The model of the car is:" + model);
+            Console.WriteLine("The seating capacity of car is:" + seating_capacity);
+        }
+    }
+    public class Motorcycle: Vehicle
+    {
+        //public int mileage;
+        public int Motor_capacity;
+        public Motorcycle(string vname, int vprice, int vmodel, int capacity) : base(vname, vprice, vmodel)
+        {
+            Motor_capacity = capacity;
+        }
+        public override void mileage()
+        {
+            Console.WriteLine("Zen mileage:1200cc");
+        }
+        public void Display()
+        {
+            Console.WriteLine("\nThe name of the car is:" + name);
+            Console.WriteLine("The price of the car is:" + price);
+            Console.WriteLine("The model of the car is:" + model);
+            Console.WriteLine("The seating capacity of car is:" + Motor_capacity);
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -13,7 +72,12 @@ namespace ConsoleUI
             /*
              * Todo follow all comments!! 
              */
-
+            Car car = new Car("Toyota", 750000, 2010, 5);
+            car.DisplayInfo();
+            Motorcycle Motor = new Motorcycle("Toyota", 750000, 2010, 5);
+            Motor.speed();
+            Motor.mileage();
+            Motor.Display();
             #region Vehicles
 
             /*
